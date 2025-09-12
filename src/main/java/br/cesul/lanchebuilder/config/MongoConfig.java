@@ -28,7 +28,7 @@ public class MongoConfig {
         )).applyConnectionString(new ConnectionString(URI)).build();
 
         client = MongoClients.create(settings);
-        db = client.getDatabase("lanche");
+        db = client.getDatabase("trabalhogilberto");
     }
     private MongoConfig(){}
 

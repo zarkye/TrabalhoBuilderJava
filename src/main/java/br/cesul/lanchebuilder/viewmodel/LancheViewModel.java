@@ -1,6 +1,7 @@
 package br.cesul.lanchebuilder.viewmodel;
 
 import br.cesul.lanchebuilder.model.Lanche;
+import br.cesul.lanchebuilder.repository.CounterRepository;
 import br.cesul.lanchebuilder.repository.LancheRepository;
 import javafx.application.Platform;
 import javafx.beans.binding.BooleanBinding;
@@ -29,6 +30,7 @@ public class LancheViewModel {
     public StringProperty alfaceProperty(){return alface;}
 
     private final LancheRepository repo = new LancheRepository();
+    private final CounterRepository counter = new CounterRepository();
 
     private final ObservableList<Lanche> lanches = FXCollections.observableArrayList();
     public ObservableList<Lanche> getLanches(){return lanches;}
@@ -97,15 +99,16 @@ public class LancheViewModel {
     }
 
     private boolean getTomateBoolean(){
-        return "Sim".equals(tomate.get());
+        return "Sim".equalsIgnoreCase(tomate.get());
     }
 
     private boolean getAlfaceBoolean(){
-        return "Sim".equals(alface.get());
+        return "Sim".equalsIgnoreCase(alface.get());
     }
 
     private Lanche criarLanche(){
         return new Lanche.Builder()
+                .id(counter.getNextPedidoId())
                 .comPao(pao.get())
                 .comCarne(carne.get())
                 .comTomate(getTomateBoolean())
