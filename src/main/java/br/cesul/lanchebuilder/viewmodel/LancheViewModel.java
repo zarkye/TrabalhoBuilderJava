@@ -12,6 +12,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.TextFormatter;
 import javafx.util.converter.NumberStringConverter;
 
@@ -33,7 +34,10 @@ public class LancheViewModel {
     private final CounterRepository counter = new CounterRepository();
 
     private final ObservableList<Lanche> lanches = FXCollections.observableArrayList();
+    private final FilteredList<Lanche> lanchesFiltrados;
+
     public ObservableList<Lanche> getLanches(){return lanches;}
+    public FilteredList<Lanche> getLanchesFiltrados(){return lanchesFiltrados;}
 
     public BooleanBinding camposInvalidos;
     public BooleanBinding paoInvalido;
@@ -50,6 +54,8 @@ public class LancheViewModel {
                 }
             }
         });
+
+        lanchesFiltrados = new FilteredList<>(lanches, p -> true);
 
         // Sempre que mudar algum ingrediente, recalcula o valor
 
@@ -69,6 +75,22 @@ public class LancheViewModel {
         alfaceInvalido = alfaceProperty().isNull();
 
     }
+
+    public void filtrarLanches(String filtro) {
+        if (filtro == null || filtro.isEmpty()) {
+            lanchesFiltrados.setPredicate(l -> true);
+        } else {
+            String lowerFiltro = filtro.toLowerCase();
+            lanchesFiltrados.setPredicate(l ->
+                    (l.getPao() != null && l.getPao().toLowerCase().contains(lowerFiltro)) ||
+                            (l.getCarne() != null && l.getCarne().toLowerCase().contains(lowerFiltro)) ||
+                            (l.isTomate() && "tomate".contains(lowerFiltro)) ||
+                            (l.isAlface() && "alface".contains(lowerFiltro)) ||
+                            String.valueOf(l.getValor()).contains(lowerFiltro)
+            );
+        }
+    }
+
     public BooleanBinding camposInvalidos(){
         return camposInvalidos;
     }

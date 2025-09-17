@@ -27,6 +27,7 @@ public class LancheView {
     @FXML private TableView<Lanche> lancheTable;
     @FXML private TableColumn<Lanche, String> pedidoCol;
     @FXML private TableColumn<Lanche, String> valorCol;
+    @FXML private TextField buscaInput;
 
     private final LancheViewModel vm = new LancheViewModel();
 
@@ -46,7 +47,10 @@ public class LancheView {
         valorCol.setCellValueFactory(cellData ->
              new SimpleStringProperty(cellData.getValue().getValorFormatado())
         );
-        lancheTable.setItems(vm.getLanches());
+        lancheTable.setItems(vm.getLanchesFiltrados());
+
+        buscaInput.textProperty()
+                .addListener((obs, oldV, newV) -> vm.filtrarLanches(newV));
 
         pedidoButton.disableProperty().bind(vm.camposInvalidos());
         carneBox.disableProperty().bind(vm.paoInvalido());

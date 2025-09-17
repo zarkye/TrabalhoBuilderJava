@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.TextField?>
 <AnchorPane prefHeight="600.0" prefWidth="900.0"
             xmlns="http://javafx.com/javafx/24.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
@@ -64,27 +65,44 @@
             </HBox>
          </top>
          <center>
-            <TableView fx:id="lancheTable" prefHeight="500" prefWidth="900"
-                       style="-fx-background-color: white;
-                                  -fx-background-radius: 12;
-                                  -fx-border-radius: 12;
-                                  -fx-border-color: #d1d9e6;
-                                  -fx-border-width: 1;
-                                  -fx-selection-bar: #bbdefb;
-                                  -fx-selection-bar-non-focused: #e3f2fd;
-                                  -fx-table-cell-border-color: transparent;
-                                  -fx-table-header-background: #3f51b5;
-                                  -fx-table-header-border-color: #3f51b5;
-                                  -fx-control-inner-background: white;
-                                  -fx-control-inner-background-alt: #f9f9f9;">
-               <columns>
-                  <TableColumn fx:id="pedidoCol" prefWidth="300" text="Pedido" style="-fx-alignment: CENTER;" />
-                  <TableColumn fx:id="valorCol" prefWidth="200" text="Valor" style="-fx-alignment: CENTER;" />
-               </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
+            <VBox spacing="10" alignment="TOP_CENTER" style="-fx-background-color: transparent;">
+               <padding>
+                  <Insets top="15" right="15" left="15" bottom="15"/>
+               </padding>
+               <!-- Campo de busca -->
+               <TextField fx:id="buscaInput"
+                          promptText="Buscar pedido (ex: brioche, carne...)"
+                          maxWidth="300"
+                          style="-fx-background-radius: 10;
+                        -fx-border-radius: 10;
+                        -fx-border-color: #d1d9e6;
+                        -fx-border-width: 1;
+                        -fx-padding: 6;
+                        -fx-font-size: 14px;" />
+
+               <!-- Tabela -->
+               <TableView fx:id="lancheTable" prefHeight="500" prefWidth="900"
+                          style="-fx-background-color: white;
+                        -fx-background-radius: 12;
+                        -fx-border-radius: 12;
+                        -fx-border-color: #d1d9e6;
+                        -fx-border-width: 1;
+                        -fx-selection-bar: #bbdefb;
+                        -fx-selection-bar-non-focused: #e3f2fd;
+                        -fx-table-cell-border-color: transparent;
+                        -fx-table-header-background: #3f51b5;
+                        -fx-table-header-border-color: #3f51b5;
+                        -fx-control-inner-background: white;
+                        -fx-control-inner-background-alt: #f9f9f9;">
+                  <columns>
+                     <TableColumn fx:id="pedidoCol" prefWidth="300" text="Pedido" style="-fx-alignment: CENTER;" />
+                     <TableColumn fx:id="valorCol" prefWidth="200" text="Valor" style="-fx-alignment: CENTER;" />
+                  </columns>
+                  <columnResizePolicy>
+                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                  </columnResizePolicy>
+               </TableView>
+            </VBox>
          </center>
       </BorderPane>
    </children>
