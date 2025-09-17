@@ -19,12 +19,7 @@ public class Lanche {
     public Lanche(){}
 
     public Lanche(Builder builder){
-        this.pedidoId = builder.pedidoId;
-        this.pao = builder.pao;
-        this.carne = builder.carne;
-        this.tomate = builder.tomate;
-        this.alface = builder.alface;
-        setValor(builder.valor);
+
     }
 
     public String getPedido() {
@@ -91,44 +86,7 @@ public class Lanche {
 
     // Builder interno
     public static class Builder {
-        private String pao;
-        private String carne;
-        private boolean tomate;
-        private boolean alface;
-        private double valor;
-        private long pedidoId;
 
-        public Builder id(long id){
-            this.pedidoId = id;
-            return this;
-        }
-        public Builder comPao(String pao) {
-            this.pao = pao;
-            return this;
-        }
-
-        public Builder comCarne(String carne) {
-            this.carne = carne;
-            return this;
-        }
-
-        public Builder comTomate(boolean tomate) {
-            this.tomate = tomate;
-            return this;
-        }
-
-        public Builder comAlface(boolean alface) {
-            this.alface = alface;
-            return this;
-        }
-        public Builder custo(double valor){
-            this.valor = valor;
-            return this;
-        }
-
-        public Lanche build() {
-            return new Lanche(this);
-        }
     }
 }
 

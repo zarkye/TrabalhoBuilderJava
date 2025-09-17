@@ -107,14 +107,7 @@ public class LancheViewModel {
     }
 
     private Lanche criarLanche(){
-        return new Lanche.Builder()
-                .id(counter.getNextPedidoId())
-                .comPao(pao.get())
-                .comCarne(carne.get())
-                .comTomate(getTomateBoolean())
-                .comAlface(getAlfaceBoolean())
-                .custo(valorPedido.get())
-                .build();
+
     }
 
     private void calcularValor() {
