@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="br.cesul.youtube.view.ChannelListView"
+            style="-fx-background-color: #0f0f0f;"
+            prefWidth="1280" prefHeight="720">
+
+    <VBox spacing="20" alignment="TOP_CENTER" style="-fx-padding: 30;">
+        <Label text="Canais" style="-fx-font-size: 32px; -fx-text-fill: white;"/>
+
+        <ListView fx:id="channelList" prefHeight="600" prefWidth="800"
+                  style="-fx-background-color: #181818; -fx-text-fill: white;"/>
+
+        <Button fx:id="createChannelButton" text="Criar Novo Canal"
+                style="-fx-background-color: red; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 10;"/>
+    </VBox>
+
+</AnchorPane>

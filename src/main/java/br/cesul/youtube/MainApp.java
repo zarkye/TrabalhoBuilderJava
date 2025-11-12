@@ -1,4 +1,4 @@
-package br.cesul.lanchebuilder;
+package br.cesul.youtube;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +10,11 @@ public class MainApp extends Application
 {
     @Override
     public void start(Stage stage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/cesul/lanchebuilder/LancheView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/cesul/youtube/ChannelListView.fxml"));
 
         Parent root = loader.load();
         stage.setScene(new Scene(root));
-        stage.setTitle("Hamburgue");
+        stage.setTitle("Youtoba");
         stage.show();
     }
     public static void main( String[] args ){launch();}

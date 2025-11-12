@@ -1,4 +1,4 @@
-package br.cesul.lanchebuilder.config;
+package br.cesul.youtube.config;
 
 // Classe Singleton que expõe um link para a Database
 // com mapeamento automático de pojo's

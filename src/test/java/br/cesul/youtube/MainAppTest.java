@@ -1,4 +1,4 @@
-package br.cesul.lanchebuilder;
+package br.cesul.youtube;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
