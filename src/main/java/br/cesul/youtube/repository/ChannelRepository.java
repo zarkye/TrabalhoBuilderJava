@@ -33,10 +33,4 @@ public class ChannelRepository {
         Bson update = Updates.set("subscribers", subscribers);
         col.updateOne(filter, update);
     }
-
-    public void incrementSubscribers(String name) {
-        Bson filter = Filters.eq("name", name);
-        Bson update = Updates.inc("subscribers", 1);
-        col.updateOne(filter, update);
-    }
 }

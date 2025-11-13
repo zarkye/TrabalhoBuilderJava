@@ -25,7 +25,6 @@ public class ChannelListView {
             protected void updateItem(Channel channel, boolean empty) {
                 super.updateItem(channel, empty);
                 setText(empty || channel == null ? null : channel.getName());
-                setStyle("-fx-text-fill: white; -fx-background-color: #181818;");
             }
         });
 

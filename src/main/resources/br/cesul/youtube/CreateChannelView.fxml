@@ -1,25 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="br.cesul.youtube.view.CreateChannelView"
-            style="-fx-background-color: #0f0f0f;"
-            prefWidth="1280" prefHeight="720">
+            style="-fx-padding: 30 30 30 30; -fx-background-color: linear-gradient(to bottom, #f9f9f9, #e6e6e6);"
+            prefWidth="500" prefHeight="720">
 
-    <VBox alignment="CENTER" spacing="20" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
-          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
-        <Label text="Criar Canal" style="-fx-font-size: 32px; -fx-text-fill: white;"/>
+    <!-- Container principal centralizado -->
+    <VBox alignment="CENTER" spacing="20"
+          style="fx-padding: 30 30 30 30"
+          AnchorPane.topAnchor="0"
+          AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0"
+          AnchorPane.rightAnchor="0">
 
-        <TextField fx:id="channelNameField" promptText="Nome do Canal"
-                   style="-fx-background-color: #181818; -fx-text-fill: white; -fx-prompt-text-fill: gray; -fx-font-size: 18px;"/>
+        <!-- Card central -->
+        <VBox alignment="CENTER" spacing="20"
+              style="-fx-background-color: white;
+                     -fx-padding: 50;
+                     -fx-background-radius: 16;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 4);">
 
-        <Button fx:id="createButton" text="Criar"
-                style="-fx-background-color: red; -fx-text-fill: white; -fx-font-size: 18px; -fx-background-radius: 10;"/>
+            <Label text="Criar Canal"
+                   style="-fx-font-size: 32px;
+                          -fx-text-fill: #333333;
+                          -fx-font-weight: bold;"/>
 
-        <Button fx:id="backButton" text="Voltar"
-                style="-fx-background-color: gray; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10;"/>
+            <TextField fx:id="channelNameField"
+                       promptText="Nome do Canal"
+                       maxWidth="250" prefHeight="45"
+                       style="-fx-background-color: #f2f2f2;
+                              -fx-text-fill: #333333;
+                              -fx-prompt-text-fill: #888888;
+                              -fx-font-size: 16px;
+                              -fx-background-radius: 8;
+                              -fx-border-color: #cccccc;
+                              -fx-border-radius: 8;
+                              -fx-padding: 0 10 0 10;"/>
+
+            <Button fx:id="createButton" text="Criar"
+                    style="-fx-background-color: red;
+                           -fx-text-fill: white;
+                           -fx-font-size: 16px;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 20;
+                           -fx-padding: 10 40 10 40;
+                           -fx-cursor: hand;"/>
+
+            <Button fx:id="backButton" text="Voltar"
+                    style="-fx-background-color: #e0e0e0;
+                           -fx-text-fill: #333333;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 20;
+                           -fx-padding: 8 30 8 30;
+                           -fx-cursor: hand;"/>
+
+        </VBox>
     </VBox>
 
 </AnchorPane>

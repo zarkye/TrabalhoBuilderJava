@@ -4,20 +4,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Rectangle?>
 <AnchorPane xmlns="http://javafx.com/javafx/24.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="br.cesul.youtube.view.ChannelView"
             prefWidth="1280" prefHeight="720"
-            style="-fx-background-color: #fff;
-                  -fx-padding: 10 30 10 30;">
+            style="-fx-background-color: #fff; -fx-padding: 10 30 10 30;">
 
-   <VBox alignment="TOP_CENTER" spacing="0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+   <VBox alignment="TOP_CENTER" spacing="0"
+         AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
 
+      <!-- Imagem de fundo do canal + botão voltar -->
       <StackPane prefHeight="250">
          <ImageView fx:id="channelBackgroundImage"
                     fitWidth="1250" fitHeight="250"
@@ -27,15 +27,36 @@
                <Rectangle width="1250" height="250" arcWidth="50" arcHeight="50"/>
             </clip>
          </ImageView>
+
+         <!-- Botão Voltar flutuando sobre o banner -->
+         <Button fx:id="backButton" text="← Voltar"
+                 StackPane.alignment="TOP_LEFT"
+                 style="
+                     -fx-background-color: rgba(0,0,0,0.4);
+                     -fx-text-fill: white;
+                     -fx-font-size: 14px;
+                     -fx-font-weight: bold;
+                     -fx-background-radius: 20;
+                     -fx-padding: 6 20 6 20;
+                     -fx-cursor: hand;
+                     -fx-border-color: rgba(255,255,255,0.6);
+                     -fx-border-width: 1;
+                     -fx-border-radius: 20;
+                 ">
+            <StackPane.margin>
+               <Insets top="20" left="20"/>
+            </StackPane.margin>
+         </Button>
       </StackPane>
 
+      <!-- Informações do canal -->
       <HBox alignment="CENTER_LEFT" spacing="20"
             style="-fx-padding: 30; -fx-background-color: #fff;">
 
          <ImageView fx:id="channelImage"
                     fitWidth="100" fitHeight="100"
-                    style="-fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
-                   -fx-background-radius: 50%; -fx-border-radius: 50%;">
+                    style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+                           -fx-background-radius: 50%; -fx-border-radius: 50%;">
             <clip>
                <Circle centerX="50" centerY="50" radius="50" />
             </clip>
@@ -46,7 +67,7 @@
             <Label fx:id="channelName"
                    style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: black;" />
             <Label fx:id="subscribersLabel"
-                   style="-fx-font-size: 16px; -fx-text-fill: #000000;" />
+                   style="-fx-font-size: 16px; -fx-text-fill: #333;" />
          </VBox>
 
          <!-- Espaço entre nome e botão -->
@@ -55,12 +76,12 @@
          <!-- Botão de inscrição -->
          <Button fx:id="subscribeButton" text="INSCREVER-SE"
                  style="-fx-background-color: red;
-                           -fx-text-fill: white;
-                           -fx-font-size: 16px;
-                           -fx-font-weight: bold;
-                           -fx-background-radius: 50;
-                           -fx-padding: 10 30 10 30;
-                           -fx-cursor: hand;"/>
+                        -fx-text-fill: white;
+                        -fx-font-size: 16px;
+                        -fx-font-weight: bold;
+                        -fx-background-radius: 50;
+                        -fx-padding: 10 30 10 30;
+                        -fx-cursor: hand;"/>
       </HBox>
 
    </VBox>

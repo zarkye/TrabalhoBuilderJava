@@ -3,10 +3,13 @@ package br.cesul.youtube.view;
 import br.cesul.youtube.viewmodel.ChannelViewModel;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class ChannelView {
@@ -19,6 +22,9 @@ public class ChannelView {
 
     @FXML
     private Button subscribeButton;
+
+    @FXML
+    private Button backButton;
 
     @FXML
     private ImageView channelImage;
@@ -65,6 +71,10 @@ public class ChannelView {
             scaleUpButton.play();
         });
 
+        backButton.setOnAction(e -> {
+            goBack();
+        });
+
         subscribeButton.setOnMouseEntered(e -> {
             ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), subscribeButton);
             scaleUp.setToX(1.1);
@@ -98,10 +108,23 @@ public class ChannelView {
             );
         });
 
-        // Imagens padrão (ou personalizadas no futuro)
         Image userImage = new Image(getClass().getResourceAsStream("/br/cesul/youtube/images/channel_photo.png"));
         Image backgroundImage = new Image(getClass().getResourceAsStream("/br/cesul/youtube/images/channel_background.png"));
         channelImage.setImage(userImage);
         channelBackgroundImage.setImage(backgroundImage);
     }
+    private void goBack() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/cesul/youtube/ChannelListView.fxml"));
+            Scene scene = new Scene(loader.load());
+
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

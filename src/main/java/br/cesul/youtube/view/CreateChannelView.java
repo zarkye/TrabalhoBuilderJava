@@ -1,12 +1,14 @@
 package br.cesul.youtube.view;
 
 import br.cesul.youtube.viewmodel.CreateChannelViewModel;
+import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.util.Duration;
 
 public class CreateChannelView {
 
@@ -19,12 +21,41 @@ public class CreateChannelView {
     @FXML
     public void initialize() {
         createButton.setOnAction(e -> {
-            viewModel.createChannel(channelNameField.getText());
-            openChannelList();
+            if(!channelNameField.getText().isEmpty() && !channelNameField.getText().isBlank()){
+                viewModel.createChannel(channelNameField.getText());
+                openChannelList();
+            }
         });
 
         backButton.setOnAction(e -> openChannelList());
+
+        backButton.setOnMouseEntered(e -> {
+            ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), backButton);
+            scaleUp.setToX(1.1);
+            scaleUp.setToY(1.1);
+            scaleUp.play();
+        });
+        backButton.setOnMouseExited(e -> {
+            ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), backButton);
+            scaleUp.setToX(1.0);
+            scaleUp.setToY(1.0);
+            scaleUp.play();
+        });
+
+        createButton.setOnMouseEntered(e -> {
+            ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), createButton);
+            scaleUp.setToX(1.1);
+            scaleUp.setToY(1.1);
+            scaleUp.play();
+        });
+        createButton.setOnMouseExited(e -> {
+            ScaleTransition scaleUp = new ScaleTransition(Duration.millis(100), createButton);
+            scaleUp.setToX(1.0);
+            scaleUp.setToY(1.0);
+            scaleUp.play();
+        });
     }
+
 
     private void openChannelList() {
         try {
