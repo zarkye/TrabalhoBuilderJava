@@ -10,6 +10,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx/24.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="br.cesul.youtube.view.ChannelView"
+            fx:id="rootPane"
             prefWidth="1280" prefHeight="720"
             style="-fx-background-color: #fff; -fx-padding: 10 30 10 30;">
 
@@ -17,7 +18,7 @@
          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
 
-      <!-- Imagem de fundo do canal + botão voltar -->
+      <!-- Imagem de fundo do canal -->
       <StackPane prefHeight="250">
          <ImageView fx:id="channelBackgroundImage"
                     fitWidth="1250" fitHeight="250"
@@ -27,26 +28,6 @@
                <Rectangle width="1250" height="250" arcWidth="50" arcHeight="50"/>
             </clip>
          </ImageView>
-
-         <!-- Botão Voltar flutuando sobre o banner -->
-         <Button fx:id="backButton" text="← Voltar"
-                 StackPane.alignment="TOP_LEFT"
-                 style="
-                     -fx-background-color: rgba(0,0,0,0.4);
-                     -fx-text-fill: white;
-                     -fx-font-size: 14px;
-                     -fx-font-weight: bold;
-                     -fx-background-radius: 20;
-                     -fx-padding: 6 20 6 20;
-                     -fx-cursor: hand;
-                     -fx-border-color: rgba(255,255,255,0.6);
-                     -fx-border-width: 1;
-                     -fx-border-radius: 20;
-                 ">
-            <StackPane.margin>
-               <Insets top="20" left="20"/>
-            </StackPane.margin>
-         </Button>
       </StackPane>
 
       <!-- Informações do canal -->
@@ -62,7 +43,6 @@
             </clip>
          </ImageView>
 
-         <!-- Nome e informações -->
          <VBox spacing="5">
             <Label fx:id="channelName"
                    style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: black;" />
@@ -70,10 +50,8 @@
                    style="-fx-font-size: 16px; -fx-text-fill: #333;" />
          </VBox>
 
-         <!-- Espaço entre nome e botão -->
          <Region HBox.hgrow="ALWAYS"/>
 
-         <!-- Botão de inscrição -->
          <Button fx:id="subscribeButton" text="INSCREVER-SE"
                  style="-fx-background-color: red;
                         -fx-text-fill: white;
@@ -83,6 +61,23 @@
                         -fx-padding: 10 30 10 30;
                         -fx-cursor: hand;"/>
       </HBox>
-
    </VBox>
+
+   <!-- Botão voltar fixo -->
+   <Button fx:id="backButton" text="← Voltar"
+           AnchorPane.bottomAnchor="20"
+           AnchorPane.leftAnchor="20"
+           style="
+                  -fx-background-color: rgba(0,0,0,0.4);
+                  -fx-text-fill: white;
+                  -fx-font-size: 14px;
+                  -fx-font-weight: bold;
+                  -fx-background-radius: 20;
+                  -fx-padding: 6 20 6 20;
+                  -fx-cursor: hand;
+                  -fx-border-color: rgba(255,255,255,0.6);
+                  -fx-border-width: 1;
+                  -fx-border-radius: 20;
+              " />
 </AnchorPane>
+

@@ -13,6 +13,11 @@ public class Channel {
         this.name = name;
         this.subscribers = 0;
     }
+    // CONSTRUTOR QUE USA NOS TESTES
+    public Channel(String name, int subscribers){
+        this.name = name;
+        this.subscribers = subscribers;
+    }
 
     public ObjectId getId() {
         return id;

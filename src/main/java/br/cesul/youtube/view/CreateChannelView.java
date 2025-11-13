@@ -62,6 +62,8 @@ public class CreateChannelView {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/cesul/youtube/ChannelListView.fxml"));
             Stage stage = (Stage) createButton.getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
+            stage.sizeToScene();
+            stage.centerOnScreen();
         } catch (Exception e) {
             e.printStackTrace();
         }

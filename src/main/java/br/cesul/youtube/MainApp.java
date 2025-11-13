@@ -15,6 +15,8 @@ public class MainApp extends Application
         Parent root = loader.load();
         stage.setScene(new Scene(root));
         stage.setTitle("Youtoba");
+        stage.sizeToScene();
+        stage.centerOnScreen();
         stage.show();
     }
     public static void main( String[] args ){launch();}

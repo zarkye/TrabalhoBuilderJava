@@ -9,17 +9,22 @@ import javafx.beans.property.StringProperty;
 
 public class ChannelViewModel {
 
-    private final ChannelRepository repository = new ChannelRepository();
+    private final ChannelRepository repository;
     private Channel channel;
     private final StringProperty name = new SimpleStringProperty();
     private final IntegerProperty subscribers = new SimpleIntegerProperty();
 
+    // Construtor padrão (ELE É DE FACHADA, VOCÊ INSTANCIA A VM PASSANDO APENAS O NOME, AI POR TRÁS DOS PANO ELE CHAMA
+    // O OUTRO CONSTRUTOR, QUE ESSE SIM PODE SER USADO NOS TESTES, ENCAPSULAMENTO DE CONSTRUTOR, TOP)
     public ChannelViewModel(String channelName) {
+        this(channelName, new ChannelRepository());
+    }
+
+    // ESSE AQUI É O CONSTRUTOR QUE REALMENTE SETTA OS ELEMENTOS NA TELA, E É USADO NOS TESTES, PARA PODER CHAMAR O REPOSTUB
+    public ChannelViewModel(String channelName, ChannelRepository repository) {
+        this.repository = repository;
+
         this.channel = repository.findByName(channelName);
-        if (channel == null) {
-            channel = new Channel(channelName);
-            repository.insert(channel);
-        }
 
         this.name.set(channel.getName());
         this.subscribers.set(channel.getSubscribers());

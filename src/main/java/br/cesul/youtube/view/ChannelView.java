@@ -9,10 +9,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class ChannelView {
+    @FXML
+    public AnchorPane rootPane;
 
     @FXML
     private Label channelName;
@@ -36,7 +39,15 @@ public class ChannelView {
 
     @FXML
     public void initialize() {
-
+        rootPane.sceneProperty().addListener((obs, oldscene, newscene) -> {
+            if(newscene != null){
+                newscene.setOnKeyPressed(e -> {
+                    if(e.getCode() == javafx.scene.input.KeyCode.ESCAPE){
+                        goBack();
+                    }
+                });
+            }
+        });
     }
 
     public void loadChannel(String channelNameStr) {
@@ -46,7 +57,6 @@ public class ChannelView {
         channelName.textProperty().bind(viewModel.nameProperty());
         subscribersLabel.textProperty().bind(viewModel.subscribersProperty().asString("Inscritos: %d"));
 
-        // Eventos
         subscribeButton.setOnAction(e -> {
             viewModel.subscribe();
 
@@ -120,6 +130,8 @@ public class ChannelView {
 
             Stage stage = (Stage) backButton.getScene().getWindow();
             stage.setScene(scene);
+            stage.sizeToScene();
+            stage.centerOnScreen();
             stage.show();
 
         } catch (Exception e) {
